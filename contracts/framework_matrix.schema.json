@@ -1,0 +1,228 @@
+{
+  "$defs": {
+    "FrameworkMatrixCell": {
+      "additionalProperties": false,
+      "properties": {
+        "dimension_id": {
+          "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+          "title": "Dimension Id",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/QualitativeEvidenceAnchor"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "summary": {
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension_id",
+        "summary",
+        "evidence"
+      ],
+      "title": "FrameworkMatrixCell",
+      "type": "object"
+    },
+    "FrameworkMatrixDimension": {
+      "additionalProperties": false,
+      "properties": {
+        "definition": {
+          "minLength": 1,
+          "title": "Definition",
+          "type": "string"
+        },
+        "dimension_id": {
+          "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+          "title": "Dimension Id",
+          "type": "string"
+        },
+        "label": {
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "prompts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Prompts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dimension_id",
+        "label",
+        "definition"
+      ],
+      "title": "FrameworkMatrixDimension",
+      "type": "object"
+    },
+    "FrameworkMatrixRow": {
+      "additionalProperties": false,
+      "properties": {
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/FrameworkMatrixCell"
+          },
+          "minItems": 1,
+          "title": "Cells",
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "row_id": {
+          "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+          "title": "Row Id",
+          "type": "string"
+        },
+        "row_label": {
+          "minLength": 1,
+          "title": "Row Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "row_id",
+        "row_label",
+        "cells"
+      ],
+      "title": "FrameworkMatrixRow",
+      "type": "object"
+    },
+    "QualitativeEvidenceAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "linked_code_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Code Ids",
+          "type": "array"
+        },
+        "linked_memo_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Memo Ids",
+          "type": "array"
+        },
+        "linked_unit_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Unit Ids",
+          "type": "array"
+        }
+      },
+      "title": "QualitativeEvidenceAnchor",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "created_by_role": {
+      "minLength": 1,
+      "title": "Created By Role",
+      "type": "string"
+    },
+    "dimensions": {
+      "items": {
+        "$ref": "#/$defs/FrameworkMatrixDimension"
+      },
+      "minItems": 1,
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "framework_label": {
+      "minLength": 1,
+      "title": "Framework Label",
+      "type": "string"
+    },
+    "linked_codebook_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Codebook Ids",
+      "type": "array"
+    },
+    "linked_memo_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Memo Ids",
+      "type": "array"
+    },
+    "matrix_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Matrix Id",
+      "type": "string"
+    },
+    "matrix_version": {
+      "default": "1.0",
+      "title": "Matrix Version",
+      "type": "string"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "row_basis": {
+      "minLength": 1,
+      "title": "Row Basis",
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/FrameworkMatrixRow"
+      },
+      "minItems": 1,
+      "title": "Rows",
+      "type": "array"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "matrix_id",
+    "workspace_id",
+    "study_slug",
+    "framework_label",
+    "row_basis",
+    "created_at",
+    "created_by_role",
+    "dimensions",
+    "rows"
+  ],
+  "title": "FrameworkMatrix",
+  "type": "object"
+}

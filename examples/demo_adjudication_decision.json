@@ -1,0 +1,37 @@
+{
+  "adjudication_version": "1.0",
+  "adjudicator_role": "study_steward",
+  "compared_application_ids": [
+    "app-session-001-001-usability-breakdown",
+    "app-session-001-001-strategy-shift"
+  ],
+  "decided_at": "2026-03-24T12:20:00Z",
+  "decision_id": "adjudication-unit-session-001-001",
+  "follow_up_actions": [
+    "Update the framework matrix row to reflect the combined interpretation."
+  ],
+  "linked_framework_matrix_ids": [
+    "demo-sensitive-study-framework-matrix"
+  ],
+  "linked_memo_ids": [
+    "memo-session-001-001"
+  ],
+  "linked_mixed_method_join_ids": [
+    "demo-sensitive-study-joint-display"
+  ],
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents a merged adjudication outcome grounded in coding and synthesis artifacts."
+  ],
+  "outcome": "merged_resolution",
+  "rationale": "Both coders captured a valid part of the excerpt, so the adjudicated resolution retains the breakdown and adaptation codes together.",
+  "retained_code_ids": [
+    "usability_breakdown",
+    "strategy_shift"
+  ],
+  "round_id": "demo-sensitive-study-round-001",
+  "selected_application_id": null,
+  "study_slug": "demo-sensitive-study",
+  "unit_id": "unit-session-001-001",
+  "workspace_id": "demo-sensitive-study-coding"
+}

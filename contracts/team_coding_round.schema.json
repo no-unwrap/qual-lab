@@ -1,0 +1,186 @@
+{
+  "$defs": {
+    "TeamCodingAssignment": {
+      "additionalProperties": false,
+      "properties": {
+        "assignment_id": {
+          "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "focus_code_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Focus Code Ids",
+          "type": "array"
+        },
+        "linked_memo_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Linked Memo Ids",
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "primary_coder_role": {
+          "minLength": 1,
+          "title": "Primary Coder Role",
+          "type": "string"
+        },
+        "secondary_coder_role": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Secondary Coder Role"
+        },
+        "unit_id": {
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assignment_id",
+        "unit_id",
+        "primary_coder_role"
+      ],
+      "title": "TeamCodingAssignment",
+      "type": "object"
+    },
+    "TeamWorkflowStatus": {
+      "enum": [
+        "planned",
+        "in_progress",
+        "complete",
+        "archived"
+      ],
+      "title": "TeamWorkflowStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "adjudicator_role": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Adjudicator Role"
+    },
+    "assignments": {
+      "items": {
+        "$ref": "#/$defs/TeamCodingAssignment"
+      },
+      "title": "Assignments",
+      "type": "array"
+    },
+    "coder_roles": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "title": "Coder Roles",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "created_by_role": {
+      "minLength": 1,
+      "title": "Created By Role",
+      "type": "string"
+    },
+    "facilitator_role": {
+      "minLength": 1,
+      "title": "Facilitator Role",
+      "type": "string"
+    },
+    "linked_codebook_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Linked Codebook Ids",
+      "type": "array"
+    },
+    "linked_framework_matrix_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Framework Matrix Ids",
+      "type": "array"
+    },
+    "linked_mixed_method_join_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Mixed Method Join Ids",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "round_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Round Id",
+      "type": "string"
+    },
+    "round_version": {
+      "default": "1.0",
+      "title": "Round Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/TeamWorkflowStatus",
+      "default": "planned"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "round_id",
+    "workspace_id",
+    "study_slug",
+    "created_at",
+    "created_by_role",
+    "facilitator_role",
+    "coder_roles",
+    "linked_codebook_ids"
+  ],
+  "title": "TeamCodingRound",
+  "type": "object"
+}

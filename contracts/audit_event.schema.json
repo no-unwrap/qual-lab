@@ -1,0 +1,85 @@
+{
+  "$defs": {
+    "AuditResult": {
+      "enum": [
+        "success",
+        "blocked",
+        "error"
+      ],
+      "title": "AuditResult",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "minLength": 1,
+      "title": "Action",
+      "type": "string"
+    },
+    "actor_role": {
+      "minLength": 1,
+      "title": "Actor Role",
+      "type": "string"
+    },
+    "details": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Details"
+    },
+    "event_version": {
+      "default": "1.0",
+      "title": "Event Version",
+      "type": "string"
+    },
+    "result": {
+      "$ref": "#/$defs/AuditResult"
+    },
+    "sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel"
+    },
+    "target_id": {
+      "minLength": 1,
+      "title": "Target Id",
+      "type": "string"
+    },
+    "target_type": {
+      "minLength": 1,
+      "title": "Target Type",
+      "type": "string"
+    },
+    "timestamp": {
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    }
+  },
+  "required": [
+    "timestamp",
+    "actor_role",
+    "action",
+    "target_type",
+    "target_id",
+    "sensitivity",
+    "result"
+  ],
+  "title": "AuditEvent",
+  "type": "object"
+}

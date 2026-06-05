@@ -1,0 +1,128 @@
+{
+  "$defs": {
+    "AnalysisUnitKind": {
+      "enum": [
+        "segment",
+        "excerpt",
+        "note_span",
+        "response_item"
+      ],
+      "title": "AnalysisUnitKind",
+      "type": "string"
+    },
+    "DataModality": {
+      "enum": [
+        "transcript",
+        "observer_notes",
+        "questionnaire",
+        "audio",
+        "memo",
+        "coded_excerpt"
+      ],
+      "title": "DataModality",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "content": {
+      "minLength": 1,
+      "title": "Content",
+      "type": "string"
+    },
+    "end_offset": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "End Offset"
+    },
+    "modality": {
+      "$ref": "#/$defs/DataModality"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "source_artifact_id": {
+      "minLength": 1,
+      "title": "Source Artifact Id",
+      "type": "string"
+    },
+    "speaker_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Speaker Label"
+    },
+    "start_offset": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Start Offset"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "unit_kind": {
+      "$ref": "#/$defs/AnalysisUnitKind"
+    },
+    "unit_version": {
+      "default": "1.0",
+      "title": "Unit Version",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "workspace_id",
+    "study_slug",
+    "source_artifact_id",
+    "modality",
+    "unit_kind",
+    "content"
+  ],
+  "title": "AnalysisUnit",
+  "type": "object"
+}

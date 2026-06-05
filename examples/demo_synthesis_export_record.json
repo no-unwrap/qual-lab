@@ -1,0 +1,48 @@
+{
+  "assistive_algorithm_gate_id": "demo-sensitive-study-assistive-gate-001",
+  "assistive_algorithms_applied": [
+    "bounded_theme_suggester_v1"
+  ],
+  "audit_event_ids": [
+    "event-demo-sensitive-study-synthesis-export-001"
+  ],
+  "created_at": "2026-03-24T12:45:00Z",
+  "created_by_role": "senior_analyst",
+  "export_id": "demo-sensitive-study-synthesis-export-001",
+  "export_kind": "mixed_method_brief",
+  "export_locator": {
+    "checksum_sha256": null,
+    "locator": "secure://exports/demo-sensitive-study/synthesis-export-001.json",
+    "storage_scheme": "secure_uri"
+  },
+  "export_version": "1.0",
+  "included_approved_uses": [
+    "internal_analysis",
+    "deidentified_export"
+  ],
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents a bounded synthesis export grounded in collaboration-layer artifacts."
+  ],
+  "sensitivity": "restricted",
+  "source_adjudication_decision_ids": [
+    "adjudication-unit-session-001-001"
+  ],
+  "source_codebook_ids": [
+    "demo-sensitive-study-core"
+  ],
+  "source_framework_matrix_ids": [
+    "demo-sensitive-study-framework-matrix"
+  ],
+  "source_memo_ids": [
+    "memo-session-001-001"
+  ],
+  "source_mixed_method_join_ids": [
+    "demo-sensitive-study-joint-display"
+  ],
+  "source_team_coding_round_ids": [
+    "demo-sensitive-study-round-001"
+  ],
+  "study_slug": "demo-sensitive-study",
+  "workspace_id": "demo-sensitive-study-coding"
+}

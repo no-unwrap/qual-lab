@@ -1,0 +1,87 @@
+{
+  "created_at": "2026-03-24T11:40:00Z",
+  "created_by_role": "analyst",
+  "dimensions": [
+    {
+      "definition": "How breakdowns, friction, or confusion appear in the case.",
+      "dimension_id": "interaction_breakdown",
+      "label": "Interaction Breakdown",
+      "prompts": [
+        "What form does the breakdown take?",
+        "What makes the breakdown visible in the excerpt set?"
+      ]
+    },
+    {
+      "definition": "How the participant responds or compensates after friction appears.",
+      "dimension_id": "adaptation_response",
+      "label": "Adaptation Response",
+      "prompts": [
+        "What recovery or adaptation strategy follows the breakdown?",
+        "How does the strategy affect continued task progress?"
+      ]
+    }
+  ],
+  "framework_label": "Interaction Adaptation Matrix",
+  "linked_codebook_ids": [
+    "demo-sensitive-study-core"
+  ],
+  "linked_memo_ids": [
+    "memo-session-001-001"
+  ],
+  "matrix_id": "demo-sensitive-study-framework-matrix",
+  "matrix_version": "1.0",
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents a bounded framework matrix grounded in coded excerpts and memos."
+  ],
+  "row_basis": "participant_case",
+  "rows": [
+    {
+      "cells": [
+        {
+          "dimension_id": "interaction_breakdown",
+          "evidence": {
+            "linked_code_ids": [
+              "usability_breakdown"
+            ],
+            "linked_memo_ids": [
+              "memo-session-001-001"
+            ],
+            "linked_unit_ids": [
+              "unit-session-001-001"
+            ]
+          },
+          "notes": [
+            "Synthetic fixture only."
+          ],
+          "summary": "The participant describes a confusing prompt sequence that interrupts progress and forces a pause."
+        },
+        {
+          "dimension_id": "adaptation_response",
+          "evidence": {
+            "linked_code_ids": [
+              "strategy_shift"
+            ],
+            "linked_memo_ids": [
+              "memo-session-001-001"
+            ],
+            "linked_unit_ids": [
+              "unit-session-001-001"
+            ]
+          },
+          "notes": [
+            "Synthetic fixture only."
+          ],
+          "summary": "Rather than abandon the task, the participant slows down, seeks clarification, and switches tactics."
+        }
+      ],
+      "notes": [
+        "Synthetic fixture only."
+      ],
+      "row_id": "participant_01",
+      "row_label": "Participant 01"
+    }
+  ],
+  "study_slug": "demo-sensitive-study",
+  "workspace_id": "demo-sensitive-study-coding"
+}

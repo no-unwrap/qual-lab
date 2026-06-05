@@ -1,0 +1,18 @@
+{
+  "analysis_ready": true,
+  "approved_uses": [
+    "internal_analysis",
+    "team_coding"
+  ],
+  "artifact_id": "session-001-transcript",
+  "assessed_at": "2026-03-24T11:05:00Z",
+  "assessment_version": "1.0",
+  "blockers": [],
+  "modality": "transcript",
+  "recommended_audit_action": "record_deidentification_approval",
+  "required_actions": [],
+  "review_id": "review-session-001-transcript-v1",
+  "status": "ready_for_analysis",
+  "study_slug": "demo-sensitive-study",
+  "warnings": []
+}

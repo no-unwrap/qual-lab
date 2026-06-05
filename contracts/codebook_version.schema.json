@@ -1,0 +1,141 @@
+{
+  "$defs": {
+    "CodeDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "code_id": {
+          "minLength": 1,
+          "title": "Code Id",
+          "type": "string"
+        },
+        "definition": {
+          "minLength": 1,
+          "title": "Definition",
+          "type": "string"
+        },
+        "exclusion_criteria": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Exclusion Criteria",
+          "type": "array"
+        },
+        "exemplar_unit_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Exemplar Unit Ids",
+          "type": "array"
+        },
+        "inclusion_criteria": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Inclusion Criteria",
+          "type": "array"
+        },
+        "label": {
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "parent_code_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Code Id"
+        }
+      },
+      "required": [
+        "code_id",
+        "label",
+        "definition"
+      ],
+      "title": "CodeDefinition",
+      "type": "object"
+    },
+    "CodebookStatus": {
+      "enum": [
+        "draft",
+        "active",
+        "archived"
+      ],
+      "title": "CodebookStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "codebook_id": {
+      "minLength": 1,
+      "title": "Codebook Id",
+      "type": "string"
+    },
+    "codebook_version": {
+      "default": "1.0",
+      "title": "Codebook Version",
+      "type": "string"
+    },
+    "codes": {
+      "items": {
+        "$ref": "#/$defs/CodeDefinition"
+      },
+      "minItems": 1,
+      "title": "Codes",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "created_by_role": {
+      "minLength": 1,
+      "title": "Created By Role",
+      "type": "string"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "status": {
+      "$ref": "#/$defs/CodebookStatus",
+      "default": "draft"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "version_label": {
+      "minLength": 1,
+      "title": "Version Label",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "codebook_id",
+    "workspace_id",
+    "study_slug",
+    "version_label",
+    "created_at",
+    "created_by_role",
+    "codes"
+  ],
+  "title": "CodebookVersion",
+  "type": "object"
+}

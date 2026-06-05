@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "AdjudicationOutcome": {
+      "enum": [
+        "confirmed_primary",
+        "confirmed_secondary",
+        "merged_resolution",
+        "escalate_for_review",
+        "no_consensus"
+      ],
+      "title": "AdjudicationOutcome",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "adjudication_version": {
+      "default": "1.0",
+      "title": "Adjudication Version",
+      "type": "string"
+    },
+    "adjudicator_role": {
+      "minLength": 1,
+      "title": "Adjudicator Role",
+      "type": "string"
+    },
+    "compared_application_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "title": "Compared Application Ids",
+      "type": "array"
+    },
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    },
+    "decision_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "follow_up_actions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Follow Up Actions",
+      "type": "array"
+    },
+    "linked_framework_matrix_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Framework Matrix Ids",
+      "type": "array"
+    },
+    "linked_memo_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Memo Ids",
+      "type": "array"
+    },
+    "linked_mixed_method_join_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Linked Mixed Method Join Ids",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "outcome": {
+      "$ref": "#/$defs/AdjudicationOutcome"
+    },
+    "rationale": {
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "retained_code_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Retained Code Ids",
+      "type": "array"
+    },
+    "round_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Round Id",
+      "type": "string"
+    },
+    "selected_application_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selected Application Id"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "round_id",
+    "workspace_id",
+    "study_slug",
+    "decided_at",
+    "adjudicator_role",
+    "unit_id",
+    "compared_application_ids",
+    "outcome",
+    "rationale"
+  ],
+  "title": "AdjudicationDecision",
+  "type": "object"
+}

@@ -1,0 +1,34 @@
+{
+  "approved_uses": [
+    "internal_analysis",
+    "team_coding"
+  ],
+  "artifact_id": "session-001-transcript",
+  "deidentified_locator": {
+    "checksum_sha256": null,
+    "locator": "secure://deidentified/session-001/transcript.json",
+    "storage_scheme": "secure_uri"
+  },
+  "direct_identifier_findings": [
+    "Personal names replaced with participant labels."
+  ],
+  "notes": [
+    "Synthetic fixture only.",
+    "Approved for downstream de-identified coding work."
+  ],
+  "outcome": "approved",
+  "quasi_identifier_findings": [
+    "Rare contextual details generalized for downstream coding."
+  ],
+  "residual_sensitivity": "restricted",
+  "review_id": "review-session-001-transcript-v1",
+  "review_version": "1.0",
+  "reviewed_at": "2026-03-24T11:00:00Z",
+  "reviewer_role": "study_steward",
+  "study_slug": "demo-sensitive-study",
+  "transformations_applied": [
+    "Removed direct identifiers from utterance text.",
+    "Generalized rare contextual references."
+  ],
+  "unresolved_risks": []
+}

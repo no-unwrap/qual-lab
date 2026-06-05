@@ -1,0 +1,215 @@
+{
+  "$defs": {
+    "ApprovedUse": {
+      "enum": [
+        "internal_analysis",
+        "team_coding",
+        "deidentified_export",
+        "external_model_processing"
+      ],
+      "title": "ApprovedUse",
+      "type": "string"
+    },
+    "AssistiveAlgorithmRuntime": {
+      "enum": [
+        "local_rule_based",
+        "local_statistical",
+        "external_model"
+      ],
+      "title": "AssistiveAlgorithmRuntime",
+      "type": "string"
+    },
+    "AssistivePolicyDecision": {
+      "enum": [
+        "blocked",
+        "approved_with_conditions",
+        "approved"
+      ],
+      "title": "AssistivePolicyDecision",
+      "type": "string"
+    },
+    "StorageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "storage_scheme": {
+          "$ref": "#/$defs/StorageScheme"
+        }
+      },
+      "required": [
+        "storage_scheme",
+        "locator"
+      ],
+      "title": "StorageLocator",
+      "type": "object"
+    },
+    "StorageScheme": {
+      "enum": [
+        "secure_uri",
+        "local_encrypted",
+        "external_object_store",
+        "synthetic"
+      ],
+      "title": "StorageScheme",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "algorithm_label": {
+      "minLength": 1,
+      "title": "Algorithm Label",
+      "type": "string"
+    },
+    "algorithm_runtime": {
+      "$ref": "#/$defs/AssistiveAlgorithmRuntime"
+    },
+    "decided_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decided At"
+    },
+    "decision": {
+      "$ref": "#/$defs/AssistivePolicyDecision"
+    },
+    "decision_by_role": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decision By Role"
+    },
+    "decision_rationale": {
+      "minLength": 1,
+      "title": "Decision Rationale",
+      "type": "string"
+    },
+    "gate_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Gate Id",
+      "type": "string"
+    },
+    "gate_version": {
+      "default": "1.0",
+      "title": "Gate Version",
+      "type": "string"
+    },
+    "input_locator": {
+      "$ref": "#/$defs/StorageLocator"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "output_locator": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StorageLocator"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "proposed_uses": {
+      "items": {
+        "$ref": "#/$defs/ApprovedUse"
+      },
+      "minItems": 1,
+      "title": "Proposed Uses",
+      "type": "array"
+    },
+    "purpose": {
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "requested_by_role": {
+      "minLength": 1,
+      "title": "Requested By Role",
+      "type": "string"
+    },
+    "required_controls": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Controls",
+      "type": "array"
+    },
+    "requires_deidentification": {
+      "default": true,
+      "title": "Requires Deidentification",
+      "type": "boolean"
+    },
+    "requires_human_review": {
+      "default": true,
+      "title": "Requires Human Review",
+      "type": "boolean"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "gate_id",
+    "workspace_id",
+    "study_slug",
+    "requested_at",
+    "requested_by_role",
+    "algorithm_label",
+    "algorithm_runtime",
+    "purpose",
+    "proposed_uses",
+    "input_locator",
+    "decision",
+    "decision_rationale"
+  ],
+  "title": "AssistiveAlgorithmPolicyGate",
+  "type": "object"
+}

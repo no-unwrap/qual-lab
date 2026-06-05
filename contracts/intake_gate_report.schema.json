@@ -1,0 +1,124 @@
+{
+  "$defs": {
+    "ApprovedUse": {
+      "enum": [
+        "internal_analysis",
+        "team_coding",
+        "deidentified_export",
+        "external_model_processing"
+      ],
+      "title": "ApprovedUse",
+      "type": "string"
+    },
+    "DataModality": {
+      "enum": [
+        "transcript",
+        "observer_notes",
+        "questionnaire",
+        "audio",
+        "memo",
+        "coded_excerpt"
+      ],
+      "title": "DataModality",
+      "type": "string"
+    },
+    "GateStatus": {
+      "enum": [
+        "blocked",
+        "accepted_for_review",
+        "ready_for_analysis"
+      ],
+      "title": "GateStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "analysis_ready": {
+      "default": false,
+      "title": "Analysis Ready",
+      "type": "boolean"
+    },
+    "approved_uses": {
+      "items": {
+        "$ref": "#/$defs/ApprovedUse"
+      },
+      "title": "Approved Uses",
+      "type": "array"
+    },
+    "artifact_id": {
+      "minLength": 1,
+      "title": "Artifact Id",
+      "type": "string"
+    },
+    "assessed_at": {
+      "format": "date-time",
+      "title": "Assessed At",
+      "type": "string"
+    },
+    "assessment_version": {
+      "default": "1.0",
+      "title": "Assessment Version",
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Blockers",
+      "type": "array"
+    },
+    "modality": {
+      "$ref": "#/$defs/DataModality"
+    },
+    "recommended_audit_action": {
+      "minLength": 1,
+      "title": "Recommended Audit Action",
+      "type": "string"
+    },
+    "required_actions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Actions",
+      "type": "array"
+    },
+    "review_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Review Id"
+    },
+    "status": {
+      "$ref": "#/$defs/GateStatus"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "assessed_at",
+    "study_slug",
+    "artifact_id",
+    "modality",
+    "status",
+    "recommended_audit_action"
+  ],
+  "title": "IntakeGateReport",
+  "type": "object"
+}

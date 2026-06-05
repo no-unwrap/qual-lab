@@ -1,0 +1,22 @@
+{
+  "author_role": "analyst",
+  "body": "The excerpt suggests that interaction breakdowns trigger compensatory strategy shifts rather than immediate abandonment.",
+  "created_at": "2026-03-24T11:30:00Z",
+  "linked_code_ids": [
+    "usability_breakdown",
+    "strategy_shift"
+  ],
+  "linked_unit_ids": [
+    "unit-session-001-001"
+  ],
+  "memo_id": "memo-session-001-001",
+  "memo_kind": "analytic",
+  "memo_version": "1.0",
+  "notes": [
+    "Synthetic fixture only.",
+    "Links the initial excerpt to a higher-level analytic interpretation."
+  ],
+  "study_slug": "demo-sensitive-study",
+  "title": "Breakdown prompts adaptive strategy use",
+  "workspace_id": "demo-sensitive-study-coding"
+}

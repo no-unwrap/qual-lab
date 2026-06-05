@@ -1,0 +1,312 @@
+{
+  "$defs": {
+    "AccessRole": {
+      "additionalProperties": false,
+      "properties": {
+        "may_access_identifiable": {
+          "default": false,
+          "title": "May Access Identifiable",
+          "type": "boolean"
+        },
+        "may_export_deidentified": {
+          "default": false,
+          "title": "May Export Deidentified",
+          "type": "boolean"
+        },
+        "privileges": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Privileges",
+          "type": "array"
+        },
+        "role_name": {
+          "minLength": 1,
+          "title": "Role Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role_name",
+        "privileges"
+      ],
+      "title": "AccessRole",
+      "type": "object"
+    },
+    "AnalysisMode": {
+      "enum": [
+        "codebook_thematic",
+        "framework_analysis",
+        "rapid_qualitative_summary",
+        "mixed_methods"
+      ],
+      "title": "AnalysisMode",
+      "type": "string"
+    },
+    "CanonicalDocumentRef": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "$ref": "#/$defs/DocumentCategory"
+        },
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "doc_id": {
+          "minLength": 1,
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "location": {
+          "minLength": 1,
+          "title": "Location",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/DocumentStatus",
+          "default": "canonical"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "doc_id",
+        "category",
+        "version",
+        "location"
+      ],
+      "title": "CanonicalDocumentRef",
+      "type": "object"
+    },
+    "DataModality": {
+      "enum": [
+        "transcript",
+        "observer_notes",
+        "questionnaire",
+        "audio",
+        "memo",
+        "coded_excerpt"
+      ],
+      "title": "DataModality",
+      "type": "string"
+    },
+    "DocumentCategory": {
+      "enum": [
+        "protocol",
+        "consent",
+        "instrument",
+        "runbook",
+        "data_use_agreement"
+      ],
+      "title": "DocumentCategory",
+      "type": "string"
+    },
+    "DocumentStatus": {
+      "enum": [
+        "canonical",
+        "draft",
+        "archived"
+      ],
+      "title": "DocumentStatus",
+      "type": "string"
+    },
+    "ExternalModelAction": {
+      "enum": [
+        "disabled",
+        "deidentified_only",
+        "approved_exception"
+      ],
+      "title": "ExternalModelAction",
+      "type": "string"
+    },
+    "ExternalModelPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_model_classes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Model Classes",
+          "type": "array"
+        },
+        "allowed_providers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Providers",
+          "type": "array"
+        },
+        "default_action": {
+          "$ref": "#/$defs/ExternalModelAction",
+          "default": "disabled"
+        },
+        "requires_deidentification": {
+          "default": true,
+          "title": "Requires Deidentification",
+          "type": "boolean"
+        },
+        "requires_human_review": {
+          "default": true,
+          "title": "Requires Human Review",
+          "type": "boolean"
+        }
+      },
+      "title": "ExternalModelPolicy",
+      "type": "object"
+    },
+    "RetentionPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "audit_log": {
+          "minLength": 1,
+          "title": "Audit Log",
+          "type": "string"
+        },
+        "code_key": {
+          "minLength": 1,
+          "title": "Code Key",
+          "type": "string"
+        },
+        "deidentified_data": {
+          "minLength": 1,
+          "title": "Deidentified Data",
+          "type": "string"
+        },
+        "identifiable_data": {
+          "minLength": 1,
+          "title": "Identifiable Data",
+          "type": "string"
+        },
+        "raw_media": {
+          "minLength": 1,
+          "title": "Raw Media",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifiable_data",
+        "deidentified_data",
+        "raw_media",
+        "audit_log",
+        "code_key"
+      ],
+      "title": "RetentionPolicy",
+      "type": "object"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "StudyStatus": {
+      "enum": [
+        "draft",
+        "active",
+        "closed",
+        "archived"
+      ],
+      "title": "StudyStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "access_roles": {
+      "items": {
+        "$ref": "#/$defs/AccessRole"
+      },
+      "minItems": 1,
+      "title": "Access Roles",
+      "type": "array"
+    },
+    "analysis_modes": {
+      "items": {
+        "$ref": "#/$defs/AnalysisMode"
+      },
+      "minItems": 1,
+      "title": "Analysis Modes",
+      "type": "array"
+    },
+    "canonical_documents": {
+      "items": {
+        "$ref": "#/$defs/CanonicalDocumentRef"
+      },
+      "minItems": 1,
+      "title": "Canonical Documents",
+      "type": "array"
+    },
+    "data_sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel"
+    },
+    "display_name": {
+      "minLength": 1,
+      "title": "Display Name",
+      "type": "string"
+    },
+    "external_model_policy": {
+      "$ref": "#/$defs/ExternalModelPolicy"
+    },
+    "manifest_version": {
+      "default": "1.0",
+      "title": "Manifest Version",
+      "type": "string"
+    },
+    "modalities": {
+      "items": {
+        "$ref": "#/$defs/DataModality"
+      },
+      "minItems": 1,
+      "title": "Modalities",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "retention": {
+      "$ref": "#/$defs/RetentionPolicy"
+    },
+    "status": {
+      "$ref": "#/$defs/StudyStatus",
+      "default": "draft"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    }
+  },
+  "required": [
+    "study_slug",
+    "display_name",
+    "data_sensitivity",
+    "modalities",
+    "analysis_modes",
+    "canonical_documents",
+    "access_roles",
+    "retention"
+  ],
+  "title": "StudyManifest",
+  "type": "object"
+}

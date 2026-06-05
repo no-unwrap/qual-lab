@@ -1,0 +1,24 @@
+{
+  "artifact_id": "session-001-transcript",
+  "artifact_label": "Synthetic Session 001 Transcript",
+  "code_key_linked": false,
+  "contains_direct_identifiers": true,
+  "contains_quasi_identifiers": true,
+  "contains_raw_media": false,
+  "deidentification_state": "in_review",
+  "intake_version": "1.0",
+  "modality": "transcript",
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents an intake artifact staged outside the repository boundary."
+  ],
+  "received_at": "2026-03-24T10:15:00Z",
+  "sensitivity": "regulated",
+  "source": {
+    "checksum_sha256": null,
+    "locator": "secure://intake/session-001/transcript.json",
+    "storage_scheme": "secure_uri"
+  },
+  "study_slug": "demo-sensitive-study",
+  "submitted_by_role": "study_steward"
+}

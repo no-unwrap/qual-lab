@@ -1,0 +1,69 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "application_id": {
+      "minLength": 1,
+      "title": "Application Id",
+      "type": "string"
+    },
+    "application_version": {
+      "default": "1.0",
+      "title": "Application Version",
+      "type": "string"
+    },
+    "applied_at": {
+      "format": "date-time",
+      "title": "Applied At",
+      "type": "string"
+    },
+    "code_id": {
+      "minLength": 1,
+      "title": "Code Id",
+      "type": "string"
+    },
+    "codebook_id": {
+      "minLength": 1,
+      "title": "Codebook Id",
+      "type": "string"
+    },
+    "coder_role": {
+      "minLength": 1,
+      "title": "Coder Role",
+      "type": "string"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "application_id",
+    "workspace_id",
+    "study_slug",
+    "unit_id",
+    "codebook_id",
+    "code_id",
+    "coder_role",
+    "applied_at"
+  ],
+  "title": "CodeApplication",
+  "type": "object"
+}

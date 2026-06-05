@@ -1,0 +1,20 @@
+{
+  "content": "Participant describes switching strategies after a confusing prompt.",
+  "end_offset": 67,
+  "modality": "transcript",
+  "notes": [
+    "Synthetic fixture only."
+  ],
+  "source_artifact_id": "session-001-transcript",
+  "speaker_label": "participant",
+  "start_offset": 0,
+  "study_slug": "demo-sensitive-study",
+  "tags": [
+    "scenario-a",
+    "interaction-breakdown"
+  ],
+  "unit_id": "unit-session-001-001",
+  "unit_kind": "excerpt",
+  "unit_version": "1.0",
+  "workspace_id": "demo-sensitive-study-coding"
+}

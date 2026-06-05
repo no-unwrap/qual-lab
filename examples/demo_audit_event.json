@@ -1,0 +1,11 @@
+{
+  "action": "validated_study_manifest",
+  "actor_role": "study_steward",
+  "details": "Synthetic audit event used to validate the baseline contract.",
+  "event_version": "1.0",
+  "result": "success",
+  "sensitivity": "regulated",
+  "target_id": "demo-sensitive-study",
+  "target_type": "study_manifest",
+  "timestamp": "2026-03-24T10:00:00Z"
+}

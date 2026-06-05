@@ -1,0 +1,15 @@
+{
+  "application_id": "app-session-001-001-usability-breakdown",
+  "application_version": "1.0",
+  "applied_at": "2026-03-24T11:25:00Z",
+  "code_id": "usability_breakdown",
+  "codebook_id": "demo-sensitive-study-core",
+  "coder_role": "analyst",
+  "notes": [
+    "Synthetic fixture only.",
+    "Applied during an initial manual coding pass."
+  ],
+  "study_slug": "demo-sensitive-study",
+  "unit_id": "unit-session-001-001",
+  "workspace_id": "demo-sensitive-study-coding"
+}

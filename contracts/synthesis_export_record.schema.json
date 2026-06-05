@@ -1,0 +1,213 @@
+{
+  "$defs": {
+    "ApprovedUse": {
+      "enum": [
+        "internal_analysis",
+        "team_coding",
+        "deidentified_export",
+        "external_model_processing"
+      ],
+      "title": "ApprovedUse",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "StorageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "storage_scheme": {
+          "$ref": "#/$defs/StorageScheme"
+        }
+      },
+      "required": [
+        "storage_scheme",
+        "locator"
+      ],
+      "title": "StorageLocator",
+      "type": "object"
+    },
+    "StorageScheme": {
+      "enum": [
+        "secure_uri",
+        "local_encrypted",
+        "external_object_store",
+        "synthetic"
+      ],
+      "title": "StorageScheme",
+      "type": "string"
+    },
+    "SynthesisExportKind": {
+      "enum": [
+        "thematic_summary",
+        "framework_matrix_report",
+        "mixed_method_brief",
+        "adjudication_summary"
+      ],
+      "title": "SynthesisExportKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assistive_algorithm_gate_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Assistive Algorithm Gate Id"
+    },
+    "assistive_algorithms_applied": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assistive Algorithms Applied",
+      "type": "array"
+    },
+    "audit_event_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Audit Event Ids",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "created_by_role": {
+      "minLength": 1,
+      "title": "Created By Role",
+      "type": "string"
+    },
+    "export_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Export Id",
+      "type": "string"
+    },
+    "export_kind": {
+      "$ref": "#/$defs/SynthesisExportKind"
+    },
+    "export_locator": {
+      "$ref": "#/$defs/StorageLocator"
+    },
+    "export_version": {
+      "default": "1.0",
+      "title": "Export Version",
+      "type": "string"
+    },
+    "included_approved_uses": {
+      "items": {
+        "$ref": "#/$defs/ApprovedUse"
+      },
+      "minItems": 1,
+      "title": "Included Approved Uses",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel"
+    },
+    "source_adjudication_decision_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Adjudication Decision Ids",
+      "type": "array"
+    },
+    "source_codebook_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Codebook Ids",
+      "type": "array"
+    },
+    "source_framework_matrix_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Framework Matrix Ids",
+      "type": "array"
+    },
+    "source_memo_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Memo Ids",
+      "type": "array"
+    },
+    "source_mixed_method_join_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Mixed Method Join Ids",
+      "type": "array"
+    },
+    "source_team_coding_round_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Team Coding Round Ids",
+      "type": "array"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "export_id",
+    "workspace_id",
+    "study_slug",
+    "created_at",
+    "created_by_role",
+    "export_kind",
+    "included_approved_uses",
+    "sensitivity",
+    "export_locator"
+  ],
+  "title": "SynthesisExportRecord",
+  "type": "object"
+}

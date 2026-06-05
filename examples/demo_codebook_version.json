@@ -1,0 +1,46 @@
+{
+  "codebook_id": "demo-sensitive-study-core",
+  "codebook_version": "1.0",
+  "codes": [
+    {
+      "code_id": "usability_breakdown",
+      "definition": "The participant reports confusion, friction, or failure in the interaction.",
+      "exclusion_criteria": [
+        "Pure preference statements without a breakdown."
+      ],
+      "exemplar_unit_ids": [
+        "unit-session-001-001"
+      ],
+      "inclusion_criteria": [
+        "Mentions unclear prompts or navigation friction."
+      ],
+      "label": "Usability Breakdown",
+      "parent_code_id": null
+    },
+    {
+      "code_id": "strategy_shift",
+      "definition": "The participant changes approach in response to a difficulty or adaptation need.",
+      "exclusion_criteria": [
+        "Minor wording changes with no change in approach."
+      ],
+      "exemplar_unit_ids": [
+        "unit-session-001-001"
+      ],
+      "inclusion_criteria": [
+        "Describes switching tactics or compensatory behavior."
+      ],
+      "label": "Strategy Shift",
+      "parent_code_id": null
+    }
+  ],
+  "created_at": "2026-03-24T11:20:00Z",
+  "created_by_role": "analyst",
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents a small starter codebook for manual coding."
+  ],
+  "status": "active",
+  "study_slug": "demo-sensitive-study",
+  "version_label": "v1",
+  "workspace_id": "demo-sensitive-study-coding"
+}

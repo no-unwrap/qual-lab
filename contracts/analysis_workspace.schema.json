@@ -1,0 +1,216 @@
+{
+  "$defs": {
+    "AnalysisMode": {
+      "enum": [
+        "codebook_thematic",
+        "framework_analysis",
+        "rapid_qualitative_summary",
+        "mixed_methods"
+      ],
+      "title": "AnalysisMode",
+      "type": "string"
+    },
+    "ApprovedUse": {
+      "enum": [
+        "internal_analysis",
+        "team_coding",
+        "deidentified_export",
+        "external_model_processing"
+      ],
+      "title": "ApprovedUse",
+      "type": "string"
+    },
+    "DataModality": {
+      "enum": [
+        "transcript",
+        "observer_notes",
+        "questionnaire",
+        "audio",
+        "memo",
+        "coded_excerpt"
+      ],
+      "title": "DataModality",
+      "type": "string"
+    },
+    "GateStatus": {
+      "enum": [
+        "blocked",
+        "accepted_for_review",
+        "ready_for_analysis"
+      ],
+      "title": "GateStatus",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "StorageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "storage_scheme": {
+          "$ref": "#/$defs/StorageScheme"
+        }
+      },
+      "required": [
+        "storage_scheme",
+        "locator"
+      ],
+      "title": "StorageLocator",
+      "type": "object"
+    },
+    "StorageScheme": {
+      "enum": [
+        "secure_uri",
+        "local_encrypted",
+        "external_object_store",
+        "synthetic"
+      ],
+      "title": "StorageScheme",
+      "type": "string"
+    },
+    "WorkspaceSource": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_uses": {
+          "items": {
+            "$ref": "#/$defs/ApprovedUse"
+          },
+          "minItems": 1,
+          "title": "Approved Uses",
+          "type": "array"
+        },
+        "artifact_id": {
+          "minLength": 1,
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "gate_status": {
+          "$ref": "#/$defs/GateStatus",
+          "default": "ready_for_analysis"
+        },
+        "modality": {
+          "$ref": "#/$defs/DataModality"
+        },
+        "residual_sensitivity": {
+          "$ref": "#/$defs/SensitivityLevel"
+        },
+        "review_id": {
+          "minLength": 1,
+          "title": "Review Id",
+          "type": "string"
+        },
+        "source_locator": {
+          "$ref": "#/$defs/StorageLocator"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "review_id",
+        "modality",
+        "approved_uses",
+        "source_locator",
+        "residual_sensitivity"
+      ],
+      "title": "WorkspaceSource",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "allowed_analysis_modes": {
+      "items": {
+        "$ref": "#/$defs/AnalysisMode"
+      },
+      "minItems": 1,
+      "title": "Allowed Analysis Modes",
+      "type": "array"
+    },
+    "allowed_approved_uses": {
+      "items": {
+        "$ref": "#/$defs/ApprovedUse"
+      },
+      "minItems": 1,
+      "title": "Allowed Approved Uses",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "created_by_role": {
+      "minLength": 1,
+      "title": "Created By Role",
+      "type": "string"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "source_artifacts": {
+      "items": {
+        "$ref": "#/$defs/WorkspaceSource"
+      },
+      "minItems": 1,
+      "title": "Source Artifacts",
+      "type": "array"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Workspace Id",
+      "type": "string"
+    },
+    "workspace_locator": {
+      "$ref": "#/$defs/StorageLocator"
+    },
+    "workspace_version": {
+      "default": "1.0",
+      "title": "Workspace Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "workspace_id",
+    "study_slug",
+    "created_at",
+    "created_by_role",
+    "workspace_locator",
+    "allowed_analysis_modes",
+    "allowed_approved_uses",
+    "source_artifacts"
+  ],
+  "title": "AnalysisWorkspace",
+  "type": "object"
+}

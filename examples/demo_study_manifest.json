@@ -1,0 +1,93 @@
+{
+  "access_roles": [
+    {
+      "may_access_identifiable": true,
+      "may_export_deidentified": true,
+      "privileges": [
+        "manage_manifest",
+        "review_exports",
+        "approve_policy_exceptions"
+      ],
+      "role_name": "study_steward"
+    },
+    {
+      "may_access_identifiable": false,
+      "may_export_deidentified": true,
+      "privileges": [
+        "initialize_workspace",
+        "code_deidentified_excerpt",
+        "write_memo",
+        "build_framework_matrix",
+        "build_joint_display",
+        "participate_team_coding"
+      ],
+      "role_name": "analyst"
+    },
+    {
+      "may_access_identifiable": false,
+      "may_export_deidentified": true,
+      "privileges": [
+        "initialize_workspace",
+        "code_deidentified_excerpt",
+        "write_memo",
+        "build_framework_matrix",
+        "build_joint_display",
+        "coordinate_team_coding",
+        "adjudicate_coding_conflicts"
+      ],
+      "role_name": "senior_analyst"
+    }
+  ],
+  "analysis_modes": [
+    "codebook_thematic",
+    "framework_analysis",
+    "mixed_methods"
+  ],
+  "canonical_documents": [
+    {
+      "category": "protocol",
+      "checksum_sha256": null,
+      "doc_id": "protocol-v1",
+      "location": "secure://docs/protocol-v1.pdf",
+      "status": "canonical",
+      "version": "1.0"
+    },
+    {
+      "category": "consent",
+      "checksum_sha256": null,
+      "doc_id": "consent-v1",
+      "location": "secure://docs/consent-v1.pdf",
+      "status": "canonical",
+      "version": "1.0"
+    }
+  ],
+  "data_sensitivity": "regulated",
+  "display_name": "Demo Sensitive Study",
+  "external_model_policy": {
+    "allowed_model_classes": [],
+    "allowed_providers": [],
+    "default_action": "disabled",
+    "requires_deidentification": true,
+    "requires_human_review": true
+  },
+  "manifest_version": "1.0",
+  "modalities": [
+    "transcript",
+    "observer_notes",
+    "questionnaire",
+    "memo"
+  ],
+  "notes": [
+    "Synthetic fixture only.",
+    "Replace secure document references with real canonical locations outside the repository."
+  ],
+  "retention": {
+    "audit_log": "Retain with generated exports and governance records.",
+    "code_key": "Store separately from analysis artifacts and remove when policy allows.",
+    "deidentified_data": "Retain according to study policy and downstream publication posture.",
+    "identifiable_data": "Retain outside the repository per study governance.",
+    "raw_media": "Keep outside the repository and destroy per study policy."
+  },
+  "status": "active",
+  "study_slug": "demo-sensitive-study"
+}

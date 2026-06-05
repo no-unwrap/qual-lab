@@ -1,0 +1,177 @@
+{
+  "$defs": {
+    "ApprovedUse": {
+      "enum": [
+        "internal_analysis",
+        "team_coding",
+        "deidentified_export",
+        "external_model_processing"
+      ],
+      "title": "ApprovedUse",
+      "type": "string"
+    },
+    "ReviewOutcome": {
+      "enum": [
+        "approved",
+        "changes_required",
+        "rejected"
+      ],
+      "title": "ReviewOutcome",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "StorageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "storage_scheme": {
+          "$ref": "#/$defs/StorageScheme"
+        }
+      },
+      "required": [
+        "storage_scheme",
+        "locator"
+      ],
+      "title": "StorageLocator",
+      "type": "object"
+    },
+    "StorageScheme": {
+      "enum": [
+        "secure_uri",
+        "local_encrypted",
+        "external_object_store",
+        "synthetic"
+      ],
+      "title": "StorageScheme",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "approved_uses": {
+      "items": {
+        "$ref": "#/$defs/ApprovedUse"
+      },
+      "title": "Approved Uses",
+      "type": "array"
+    },
+    "artifact_id": {
+      "minLength": 1,
+      "title": "Artifact Id",
+      "type": "string"
+    },
+    "deidentified_locator": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StorageLocator"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "direct_identifier_findings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Direct Identifier Findings",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "outcome": {
+      "$ref": "#/$defs/ReviewOutcome"
+    },
+    "quasi_identifier_findings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Quasi Identifier Findings",
+      "type": "array"
+    },
+    "residual_sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel",
+      "default": "restricted"
+    },
+    "review_id": {
+      "minLength": 1,
+      "title": "Review Id",
+      "type": "string"
+    },
+    "review_version": {
+      "default": "1.0",
+      "title": "Review Version",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "title": "Reviewed At",
+      "type": "string"
+    },
+    "reviewer_role": {
+      "minLength": 1,
+      "title": "Reviewer Role",
+      "type": "string"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "transformations_applied": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Transformations Applied",
+      "type": "array"
+    },
+    "unresolved_risks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Risks",
+      "type": "array"
+    }
+  },
+  "required": [
+    "review_id",
+    "artifact_id",
+    "study_slug",
+    "reviewed_at",
+    "reviewer_role",
+    "outcome"
+  ],
+  "title": "DeidentificationReview",
+  "type": "object"
+}

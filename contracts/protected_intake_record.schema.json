@@ -1,0 +1,162 @@
+{
+  "$defs": {
+    "DataModality": {
+      "enum": [
+        "transcript",
+        "observer_notes",
+        "questionnaire",
+        "audio",
+        "memo",
+        "coded_excerpt"
+      ],
+      "title": "DataModality",
+      "type": "string"
+    },
+    "DeidentificationState": {
+      "enum": [
+        "not_started",
+        "in_review",
+        "approved",
+        "changes_required"
+      ],
+      "title": "DeidentificationState",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted",
+        "regulated"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "StorageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "checksum_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum Sha256"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "storage_scheme": {
+          "$ref": "#/$defs/StorageScheme"
+        }
+      },
+      "required": [
+        "storage_scheme",
+        "locator"
+      ],
+      "title": "StorageLocator",
+      "type": "object"
+    },
+    "StorageScheme": {
+      "enum": [
+        "secure_uri",
+        "local_encrypted",
+        "external_object_store",
+        "synthetic"
+      ],
+      "title": "StorageScheme",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "minLength": 1,
+      "title": "Artifact Id",
+      "type": "string"
+    },
+    "artifact_label": {
+      "minLength": 1,
+      "title": "Artifact Label",
+      "type": "string"
+    },
+    "code_key_linked": {
+      "default": false,
+      "title": "Code Key Linked",
+      "type": "boolean"
+    },
+    "contains_direct_identifiers": {
+      "default": true,
+      "title": "Contains Direct Identifiers",
+      "type": "boolean"
+    },
+    "contains_quasi_identifiers": {
+      "default": true,
+      "title": "Contains Quasi Identifiers",
+      "type": "boolean"
+    },
+    "contains_raw_media": {
+      "default": false,
+      "title": "Contains Raw Media",
+      "type": "boolean"
+    },
+    "deidentification_state": {
+      "$ref": "#/$defs/DeidentificationState",
+      "default": "not_started"
+    },
+    "intake_version": {
+      "default": "1.0",
+      "title": "Intake Version",
+      "type": "string"
+    },
+    "modality": {
+      "$ref": "#/$defs/DataModality"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "received_at": {
+      "format": "date-time",
+      "title": "Received At",
+      "type": "string"
+    },
+    "sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel"
+    },
+    "source": {
+      "$ref": "#/$defs/StorageLocator"
+    },
+    "study_slug": {
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "title": "Study Slug",
+      "type": "string"
+    },
+    "submitted_by_role": {
+      "minLength": 1,
+      "title": "Submitted By Role",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "study_slug",
+    "artifact_label",
+    "received_at",
+    "modality",
+    "sensitivity",
+    "submitted_by_role",
+    "source"
+  ],
+  "title": "ProtectedIntakeRecord",
+  "type": "object"
+}

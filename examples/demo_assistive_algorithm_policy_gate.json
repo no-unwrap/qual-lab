@@ -1,0 +1,38 @@
+{
+  "algorithm_label": "bounded_theme_suggester_v1",
+  "algorithm_runtime": "local_statistical",
+  "decided_at": "2026-03-24T12:35:00Z",
+  "decision": "approved_with_conditions",
+  "decision_by_role": "study_steward",
+  "decision_rationale": "Approved for internal synthesis support only after de-identification checks and manual analyst review of all suggested themes.",
+  "gate_id": "demo-sensitive-study-assistive-gate-001",
+  "gate_version": "1.0",
+  "input_locator": {
+    "checksum_sha256": null,
+    "locator": "secure://workspace/demo-sensitive-study/coding/synthesis-input.json",
+    "storage_scheme": "secure_uri"
+  },
+  "notes": [
+    "Synthetic fixture only.",
+    "Represents a bounded assistive-policy gate tied to one workspace."
+  ],
+  "output_locator": {
+    "checksum_sha256": null,
+    "locator": "secure://workspace/demo-sensitive-study/coding/assistive-themes.json",
+    "storage_scheme": "secure_uri"
+  },
+  "proposed_uses": [
+    "internal_analysis"
+  ],
+  "purpose": "Generate candidate synthesis themes from adjudicated coding artifacts for analyst review.",
+  "requested_at": "2026-03-24T12:30:00Z",
+  "requested_by_role": "senior_analyst",
+  "required_controls": [
+    "Record model and prompt parameters in audit events before export.",
+    "Require manual analyst confirmation before any synthesis export is released."
+  ],
+  "requires_deidentification": true,
+  "requires_human_review": true,
+  "study_slug": "demo-sensitive-study",
+  "workspace_id": "demo-sensitive-study-coding"
+}
